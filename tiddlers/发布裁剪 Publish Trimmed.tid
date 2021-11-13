@@ -1,0 +1,28 @@
+created: 20211113135654538
+creator: Alexinea
+modified: 20211113140057001
+modifier: Alexinea
+tags: dotnet publish-trimmed
+title: 发布裁剪 Publish Trimmed
+tmap.id: 33b98ad9-fa16-4081-9ae0-2e91bdccdfa6
+type: text/vnd.tiddlywiki
+
+发布裁剪可以在发布时将没有用到的代码裁剪掉，使得发布出去的程序体积大幅度减小。
+
+! .NET 5
+在 .NET 5 中，发布裁剪的默认行为是程序集粒度的，意味着会保留用到了的程序集，哪怕你只用了程序集中的一个方法，整个程序集也会被保留下来。但是 .NET 5 提供了一种更为激进的裁剪方式，基于方法粒度进行裁剪。
+
+开启这个特性之后，如果一个程序集只被调用了一个方法，那裁剪后将只会保留这一个方法，而不是保留整个程序集。
+
+!! 使用
+使用方法很简单，只需要发布时附带命令行参数 /p:PublishTrimmed=true /p:TrimMode=true 即可，例如：
+
+```
+dotnet publish -c Release -r win-x64 /p:PublishTrimmed=true /p:TrimMode=true
+```
+
+如果因为动态加载需要保留一些方法、类型或者程序集的话，可以按照如下文章内的方法进行配置：[[Customizing Trimming in .NET 5|https://devblogs.microsoft.com/dotnet/customizing-trimming-in-net-core-5/]]
+
+!! 注意事项
+
+由于这种方法较为激进，请确保发布后进行充分的测试，以免出现因为动态加载导致运行时找不到方法的问题。
