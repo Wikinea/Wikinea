@@ -1,8 +1,8 @@
-created: 20211017130453639
+created: 20211113160811869
 dependents: 
 description: CodeMirror editor
 list: readme usage keyboard license
-modified: 20211017130453639
+modified: 20211113160811869
 name: CodeMirror
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/codemirror

@@ -1,8 +1,8 @@
-created: 20211017130439267
+created: 20211113160807304
 dependents: 
 description: JavaScript highlighting mode for CodeMirror
 list: readme
-modified: 20211017130439267
+modified: 20211113160807304
 name: CodeMirror Mode JavaScript
 parent-plugin: $:/plugins/tiddlywiki/codemirror
 plugin-type: plugin
